@@ -1,0 +1,87 @@
+
+INSTRUCCIONES – ESCUELA SHINSEIKAN
+================================
+
+1) CÓMO AGREGAR O MODIFICAR ALUMNOS
+----------------------------------
+Los alumnos se cargan dentro del archivo index.html, en la sección JavaScript:
+
+const alumnos = { ... }
+
+Ejemplo de alumno:
+
+juan:{
+  pass:'1234',
+  nombre:'Juan Pérez',
+  rol:'alumno',
+  dojo:'Yapeyú',
+  horario:'Lunes y Miércoles 18:00',
+  actividad:'Karate-Do · Kobudo',
+  avisos:'Traer karategui completo',
+  foto:'images/alumnos/juan.jpg',
+  nacimiento:'12/04/2010',
+  categoria:'Juvenil',
+  cinturon:'Verde',
+  examen:'Marzo 2025',
+  apto:'Vigente'
+}
+
+• El nombre de usuario es la clave (juan, maria, etc.)
+• Para agregar un alumno, copiar un bloque y cambiar los datos
+• Para eliminar un alumno, borrar su bloque
+
+Las fotos de alumnos van en:
+/images/alumnos/
+
+------------------------------------------------
+
+2) DIMENSIONES DE TODAS LAS IMÁGENES
+-----------------------------------
+
+LOGO
+• Archivo: logo.jpg
+• Tamaño recomendado: 300 x 100 px
+
+BANNER PRINCIPAL
+• Archivo: banner.jpg
+• Tamaño recomendado: 1600 x 600 px
+
+INICIO / SECCIONES (Karate, Kobudo, Aikido)
+• Tamaño: 460 x 460 px
+• Archivos:
+  - images/inicio.jpg
+  - images/karate-do.jpg
+  - images/karate-kata.jpg
+  - images/kobudo.jpg
+  - images/kobudo-armas.jpg
+  - images/aikido.jpg
+  - images/aikido-entrenamiento.jpg
+
+INSTRUCTORES
+• Tamaño: 150 x 150 px (pueden ser 300 x 300)
+• Archivos:
+  - images/sensei.jpg
+  - images/sempai1.jpg a sempai15.jpg
+
+ALUMNOS
+• Tamaño recomendado: 300 x 300 px
+• Archivos:
+  - images/alumnos/usuario.jpg
+
+ICONOS Y REDES
+• WhatsApp / Instagram: 64 x 64 px (SVG o PNG)
+
+------------------------------------------------
+
+3) RECOMENDACIONES
+-----------------
+• Todas las imágenes deben pesar menos de 200 KB
+• Usar formato JPG o PNG
+• Optimizar con TinyPNG o Squoosh
+• Mantener los nombres de archivo EXACTOS
+
+Este sistema funciona para:
+✔ Web
+✔ APK
+✔ Google Play Store
+
