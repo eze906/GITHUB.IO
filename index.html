@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escuela Shinseikan | Karate-Do y Kobu-Do Tradicional</title>
+
+<style>
+:root{
+  --negro:#111;
+  --rojo:#8b0000;
+  --gris:#f4f1ec;
+  --blanco:#fff;
+}
+body{margin:0;font-family:'Segoe UI',Arial,sans-serif;background:var(--gris);color:var(--negro)}
+header{background:linear-gradient(90deg,#000,#222);color:#fff;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.logo{height:70px}
+.menu{display:flex;gap:18px}
+.menu a{color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding-bottom:4px}
+.menu a.active{border-bottom:2px solid var(--rojo)}
+.menu-toggle{display:none;flex-direction:column;cursor:pointer}
+.menu-toggle span{background:#fff;height:3px;width:26px;margin:4px 0}
+@media(max-width:900px){.menu{display:none;flex-direction:column;background:#111;position:absolute;top:78px;left:0;right:0;padding:20px}.menu.active{display:flex}.menu-toggle{display:flex}}
+.hero{position:relative;height:55vh;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
+.hero-slide.active{opacity:1}
+.hero-overlay{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:100%;color:#fff;text-align:center;background:rgba(0,0,0,.45)}
+section{display:none;padding:40px 15px;max-width:1100px;margin:auto}
+.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.galeria-grid img{width:100%;border-radius:12px;object-fit:cover;cursor:pointer;transition:transform .3s}
+.galeria-grid img:hover{transform:scale(1.03)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000}
+.lightbox img{max-width:90%;max-height:90%;border-radius:12px}
+.lightbox.active{display:flex}
+section.active{display:block}
+h2{font-size:28px;border-left:6px solid var(--rojo);padding-left:12px;margin-bottom:25px}
+.login-box,.panel{background:#fff;padding:25px;border-radius:14px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.login-box{max-width:420px;margin:auto}
+input,textarea,button{width:100%;padding:10px;margin:8px 0;border-radius:6px;border:1px solid #ccc;font-size:14px}
+button{background:var(--rojo);color:#fff;font-weight:bold;cursor:pointer;border:none}
+button:hover{opacity:.9}
+.flotante{position:fixed;right:15px;z-index:999}.whatsapp{bottom:20px}.instagram{bottom:80px}.flotante img{width:52px}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <img src="logo.jpg" class="logo">
+    <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <nav class="menu">
+      <a href="#" class="active" onclick="mostrarSeccion('inicio',this)">Inicio</a>
+      <a href="#" onclick="mostrarSeccion('karate',this)">Karate-Do</a>
+      <a href="#" onclick="mostrarSeccion('kobudo',this)">Kobu-Do</a>
+      <a href="#" onclick="mostrarSeccion('aikido',this)">Aikido</a>
+      <a href="#" onclick="mostrarSeccion('defensa',this)">Defensa Personal</a>
+      <a href="#" onclick="mostrarSeccion('instructores',this)">Instructores</a>
+      <a href="#" onclick="mostrarSeccion('alumnos',this)">Alumnos</a>
+      <a href="#" onclick="mostrarSeccion('contacto',this)">Contacto</a>
+      <a href="#" onclick="mostrarSeccion('galeria',this)">Galería</a>
+      <a href="#" onclick="mostrarSeccion('ubicacion',this)">Ubicación</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-slide active" style="background-image:url('banner1.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('banner2.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('banner3.jpg')"></div>
+  <div class="hero-overlay">
+    <h1>Escuela Shinseikan</h1>
+  </div>
+</div>
+
+<section id="inicio" class="active">
+  <h2>Bienvenidos</h2>
+  <p>Formación marcial tradicional con valores, disciplina y respeto.</p>
+</section>
+
+<section id="karate">
+  <h2>Karate-Do</h2>
+  <p>Arte marcial tradicional orientado al desarrollo físico, mental y espiritual.</p>
+</section>
+
+<section id="kobudo">
+  <h2>Kobu-Do</h2>
+  <p>Disciplina tradicional de armas de Okinawa que complementa el Karate-Do.</p>
+</section>
+
+<section id="aikido">
+  <h2>Aikido</h2>
+  <p>Arte marcial japonés basado en la armonía, el control y la no violencia.</p>
+</section>
+
+<section id="defensa">
+  <h2>Defensa Personal</h2>
+  <p>Sistemas prácticos de autoprotección adaptados a situaciones reales.</p>
+</section>
+
+<section id="instructores">
+  <h2>Instructores</h2>
+
+  <!-- Sensei -->
+  <div class="panel" style="text-align:center;margin-bottom:30px">
+    <img src="sensei.jpg" style="width:150px;height:150px;border-radius:50%;border:4px solid var(--rojo);object-fit:cover">
+    <h3>Sensei</h3>
+    <div>7° Dan</div>
+  </div>
+
+  <!-- Sempai -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px">
+
+    <div class="panel" style="text-align:center">
+      <img src="imagenes/instructores/sempai1.jpg" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid #444">
+      <h4>Sempai</h4>
+      <div>3° Dan</div>
+    </div>
+
+    <div class="panel" style="text-align:center">
+      <img src="imagenes/instructores/sempai2.jpg" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid #444">
+      <h4>Sempai</h4>
+      <div>2° Dan</div>
+    </div>
+
+    <div class="panel" style="text-align:center">
+      <img src="imagenes/instructores/sempai3.jpg" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid #444">
+      <h4>Sempai</h4>
+      <div>1° Dan</div>
+    </div>
+
+  </div>
+</section>
+
+<section id="alumnos">
+  <h2>Área de Alumnos</h2>
+
+  <div id="login-alumno" class="login-box">
+    <input id="user" placeholder="Usuario">
+    <input id="pass" type="password" placeholder="Contraseña">
+    <button onclick="loginAlumno()">Ingresar</button>
+  </div>
+
+  <div id="panel-alumno" class="panel" style="display:none">
+    <h3>Ficha técnica del alumno</h3>
+
+    <div id="ficha-imprimible" style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+      <img id="fotoAlumno" src="imagenes/alumnos/default.jpg" style="width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid var(--rojo)">
+      <div>
+        <p><strong>Actividad:</strong> <span id="actividadAlumno"></span></p>
+        <p><strong>Dojo:</strong> <span id="dojoAlumno"></span></p>
+        <p><strong>Horario:</strong> <span id="horarioAlumno"></span></p>
+        <p><strong>Categoría:</strong> <span id="categoriaAlumno"></span></p>
+        <p><strong>Cinturón:</strong> <span id="cinturonAlumno"></span></p>
+      </div>
+      <div>
+        <img id="qrAlumno" style="width:120px;height:120px">
+        <div style="font-size:12px;text-align:center">QR Alumno</div>
+      </div>
+    </div>
+
+    <hr>
+    <h4>📘 Material de estudio</h4>
+    <p id="materialAlumno">No hay material asignado.</p>
+
+    <h4>📌 Instrucciones</h4>
+    <ul id="instruccionesAlumno"></ul>
+
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <button onclick="imprimirFicha()">Imprimir ficha</button>
+      <button onclick="logoutAlumno()">Cerrar sesión</button>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <h2>Galería</h2>
+  <div class="panel">
+    <div class="galeria-grid">
+      <img src="imagenes/galeria/1.jpg" alt="Galería 1">
+      <img src="imagenes/galeria/2.jpg" alt="Galería 2">
+      <img src="imagenes/galeria/3.jpg" alt="Galería 3">
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <h2>Contacto</h2>
+  <form class="panel">
+    <input placeholder="Nombre">
+    <input placeholder="Email">
+    <textarea placeholder="Mensaje"></textarea>
+    <button type="button">Enviar mensaje</button>
+  </form>
+</section>
+
+<section id="ubicacion">
+  <h2>Ubicación</h2>
+
+  <div class="panel" style="margin-bottom:25px">
+    <h3>Hombu Dojo San Vicente</h3>
+    <iframe 
+      src="https://www.google.com/maps?q=San+Vicente+Buenos+Aires&output=embed" 
+      width="100%" height="300" style="border:0" loading="lazy"></iframe>
+  </div>
+
+  <div class="panel">
+    <h3>Dojo Club Banco</h3>
+    <iframe 
+      src="https://www.google.com/maps?q=Club+Banco+Buenos+Aires&output=embed" 
+      width="100%" height="300" style="border:0" loading="lazy"></iframe>
+  </div>
+</section>
+
+<a class="flotante whatsapp" href="https://wa.me/549000000000" target="_blank"><img src="whatsapp.png"></a>
+<a class="flotante instagram" href="https://instagram.com" target="_blank"><img src="instagram.png"></a>
+
+<script>
+const API_URL = 'http://localhost:3000/api';
+function toggleMenu(){document.querySelector('.menu').classList.toggle('active')}
+function mostrarSeccion(id,link){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  const target = document.getElementById(id);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('.menu a').forEach(a=>a.classList.remove('active'));
+  if(link) link.classList.add('active');
+}
+
+async function loginAlumno(){
+  try{
+    const usuario = document.getElementById('user').value;
+    const password = document.getElementById('pass').value;
+
+    if(!usuario || !password){
+      alert('Completá usuario y contraseña');
+      return;
+    }
+
+    const r = await fetch(`${API_URL}/auth/login`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({usuario,password})
+    });
+
+    if(!r.ok){
+      alert('Login falló (usuario o contraseña incorrectos)');
+      return;
+    }
+
+    const data = await r.json();
+    if(!data.token){
+      alert('Respuesta inválida del servidor');
+      return;
+    }
+
+    localStorage.setItem('token',data.token);
+
+    document.getElementById('login-alumno').style.display='none';
+    document.getElementById('panel-alumno').style.display='block';
+
+    cargarFichaAlumno();
+  }catch(e){
+    alert('No se pudo conectar con el backend (¿server.js está prendido?)');
+    console.error(e);
+  }
+}
+
+async function cargarFichaAlumno(){
+  const r = await fetch(`${API_URL}/alumnos/me`,{headers:{Authorization:localStorage.getItem('token')}});
+  if(!r.ok) return;
+  const a = await r.json();
+  actividadAlumno.innerText=a.Actividad;dojoAlumno.innerText=a.Dojo;horarioAlumno.innerText=a.Horario;categoriaAlumno.innerText=a.Categoria;cinturonAlumno.innerText=a.Cinturon;
+  if(a.Foto) fotoAlumno.src='imagenes/alumnos/'+a.Foto;
+  if(a.MaterialPDF) materialAlumno.innerHTML=`<a href="material/${a.MaterialPDF}" target="_blank">Descargar PDF</a>`;
+  instruccionesAlumno.innerHTML='';
+  (a.Instrucciones||['Traer kimono']).forEach(i=>{const li=document.createElement('li');li.textContent=i;instruccionesAlumno.appendChild(li)});
+  qrAlumno.src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(a.Nombre||'Alumno Shinseikan')}`;
+}
+
+function imprimirFicha(){
+  const css=`<style>body{font-family:Arial}h3{text-align:center}.ficha{display:flex;gap:20px;align-items:center}.ficha img{border-radius:50%;border:3px solid #8b0000}</style>`;
+  const contenido=document.getElementById('ficha-imprimible').innerHTML;
+  const w=window.open('','','width=800,height=600');
+  w.document.write(css+`<h3>Ficha del Alumno - Shinseikan</h3><div class='ficha'>${contenido}</div>`);
+  w.print();
+}
+function logoutAlumno(){localStorage.removeItem('token');location.reload()}
+// HERO carrusel
+const heroSlides = document.querySelectorAll('.hero-slide');
+let heroIndex = 0;
+setInterval(()=>{
+  heroSlides[heroIndex].classList.remove('active');
+  heroIndex = (heroIndex + 1) % heroSlides.length;
+  heroSlides[heroIndex].classList.add('active');
+},5000);
+
+// galería en formato grilla (sin JS de carrusel)
+
+document.querySelectorAll('.galeria-grid img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    document.getElementById('lightboxImg').src=img.src;
+    document.getElementById('lightbox').classList.add('active');
+  });
+});
+function cerrarLightbox(){document.getElementById('lightbox').classList.remove('active')}
+
+</script>
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()"><img id="lightboxImg"></div>
+</body>
+</html>

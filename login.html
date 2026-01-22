@@ -1,0 +1,41 @@
+<h2>Login</h2>
+
+<input id="usuario" placeholder="Usuario">
+<input id="password" placeholder="Password" type="password">
+<button onclick="login()">Entrar</button>
+
+<script>
+function login() {
+  fetch('http://localhost:3000/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      usuario: usuario.value,
+      password: password.value
+    })
+  })
+  .then(res => res.json())   // 👈 CLAVE
+  .then(d => {
+    console.log('Respuesta login:', d);
+
+    if (!d.token) {
+      alert('Login incorrecto');
+      return;
+    }
+
+    localStorage.setItem('token', d.token);
+
+    const payload = JSON.parse(atob(d.token.split('.')[1]));
+    console.log('Payload token:', payload);
+
+    location.href = payload.rol === 'admin'
+      ? 'admin.html'
+      : 'alumno.html';
+  })
+  .catch(err => {
+    console.error(err);
+    alert('Error al conectar con el servidor');
+  });
+}
+</script>
+

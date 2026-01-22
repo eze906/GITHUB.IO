@@ -1,0 +1,20 @@
+<h2>Mi ficha</h2>
+
+<img id="foto" width="150"><br>
+
+<p><b>Nombre:</b> <span id="nombre"></span></p>
+<p><b>Actividad:</b> <span id="actividad"></span></p>
+<p><b>Dojo:</b> <span id="dojo"></span></p>
+<p><b>Horario:</b> <span id="horario"></span></p>
+<p><b>Categoria:</b> <span id="categoria"></span></p>
+<p><b>Cinturón:</b> <span id="cinturon"></span></p>
+
+<p><b>Instrucciones:</b></p>
+<p id="instrucciones"></p>
+
+<a id="material" style="display:none" target="_blank"></a>
+
+<button onclick="logout()">Salir</button>
+
+<script src="alumno.js"></script>
+
